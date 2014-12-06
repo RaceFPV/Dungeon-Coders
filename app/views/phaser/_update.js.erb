@@ -6,7 +6,7 @@ Dude.prototype.update = function() {
     else if (this.cursor.right)
     {
         this.dude.angle += 1;
-    }	
+    }
     if (this.cursor.up)
     {
         //  The speed we'll travel at
@@ -22,11 +22,11 @@ Dude.prototype.update = function() {
 	
     if (this.currentSpeed > 0)
     {
-      game.physics.arcade.velocityFromRotation(this.dude.rotation, this.currentSpeed, this.dude.body.velocity);
-    }	
+      //game.physics.arcade.velocityFromRotation(this.dude.rotation, this.currentSpeed, this.dude.body.velocity);
+    }
 	else
 	{
-		game.physics.arcade.velocityFromRotation(this.dude.rotation, 0, this.dude.body.velocity);
+		//game.physics.arcade.velocityFromRotation(this.dude.rotation, 0, this.dude.body.velocity);
 	}
 };
 
