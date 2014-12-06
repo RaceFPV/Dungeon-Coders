@@ -1,3 +1,20 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+main {
+  margin-top: 73px;
+  overflow-x: hidden;
+}
+
+.navbar {
+  height: 75px;
+}
+
+#chat {
+  height: 85vh;
+  overflow-y: auto;
+}
+
+#gamescreen {
+  height: 92vh;
+}
