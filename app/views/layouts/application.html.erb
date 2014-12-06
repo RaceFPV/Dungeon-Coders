@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+    <%= render partial: 'layouts/header' %>
     <% if notice or alert %>
       <%= custom_bootstrap_flash %>
     <% end %>
