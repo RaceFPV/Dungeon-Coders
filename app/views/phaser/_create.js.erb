@@ -1,0 +1,39 @@
+function create() {
+    //  We need to enable physics on the player and set world bounds
+    game.world.setBounds(0, 0, 2500, 2500);
+    game.physics.startSystem(Phaser.Physics.P2JS);
+    game.physics.p2.setImpactEvents(true);
+
+
+    //Tilemap and CollisionGroup
+    map = game.add.tilemap('level');
+    map.addTilesetImage('hyptosis_tile-art-batch-1','tiles');
+    var objectsCG = game.physics.p2.createCollisionGroup();
+    var wallsCG =  game.physics.p2.createCollisionGroup();
+    var playerCG = game.physics.p2.createCollisionGroup();
+
+    var walls = game.physics.p2.convertCollisionObjects(map, "object",true);
+    for(var wall in walls)
+    {
+	    walls[wall].setCollisionGroup(wallsCG);
+	    walls[wall].collides(playerCG);
+    }
+    //  Our tiled scrolling background
+    land = map.createLayer("background");
+    land.fixedToCamera = true;
+    layer2 = map.createLayer("layer2");
+    layer2.resizeWorld();
+    land.resizeWorld();
+
+	  player = new Dude(myId);
+	  playersList[myId] = player;
+    console.log(player + 'created');
+	  dude = player.dude;
+
+    //camera system
+    game.camera.follow(dude);
+    game.camera.focusOnXY(150, 150);
+
+    //controller system
+    cursors = game.input.keyboard.createCursorKeys();
+}
