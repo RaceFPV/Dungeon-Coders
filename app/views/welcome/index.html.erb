@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-xs-9" id="gamescreen"></div>
-  <script> <%= render partial: 'phaser/main.js.erb' %> </script>
+  <script> <%= render partial: 'phaser/variables.js.erb' %> </script>
+  <script> <%= render partial: 'phaser/preload.js.erb' %> </script>
   <script> <%= render partial: 'multiplayer/movement.js.erb' %> </script>
   <script> <%= render partial: 'multiplayer/chat.js.erb' %> </script>
   <script> <%= render partial: 'multiplayer/joined.js.erb' %> </script>
