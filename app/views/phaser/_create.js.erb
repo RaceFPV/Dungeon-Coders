@@ -2,8 +2,6 @@ function create() {
     //  We need to enable physics on the player and set world bounds
     game.world.setBounds(0, 0, 1600, 1600);
     game.physics.startSystem(Phaser.Physics.P2JS);
-    game.physics.p2.setImpactEvents(true);
-
 
     //Tilemap and CollisionGroup
     map = game.add.tilemap('level');
@@ -11,7 +9,6 @@ function create() {
     objectsCG = game.physics.p2.createCollisionGroup();
     wallsCG =  game.physics.p2.createCollisionGroup();
     playerCG = game.physics.p2.createCollisionGroup();
-    this.playerMaterial = this.game.physics.p2.createMaterial('player');
     walls = game.physics.p2.convertCollisionObjects(map, "object",true);
     for(var wall in walls)
     {
@@ -19,13 +16,13 @@ function create() {
 	    walls[wall].collides(playerCG);
     }
     //  Our tiled scrolling background
-    land = map.createLayer("background");
-    land.fixedToCamera = true;
-    land.resizeWorld();
+    level = map.createLayer("background");
+    level.fixedToCamera = true;
+    level.resizeWorld();
     layer2 = map.createLayer("layer2");
     layer2.resizeWorld();
     map.setCollisionBetween(1, 12);
-    game.physics.p2.convertTilemap(map, land);
+    game.physics.p2.convertTilemap(map, level);
 
 	  player = new Dude(myId);
 	  playersList[myId] = player;

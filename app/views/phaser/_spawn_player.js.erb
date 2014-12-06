@@ -31,10 +31,12 @@ Dude = function (index) {
     this.dude.body.setZeroDamping();
     this.dude.body.fixedRotation = true;
     this.dude.body.setCollisionGroup(playerCG);
-    this.dude.body.mass = 5;
+    this.dude.body.mass = 500;
     this.dude.body.setMaterial(this.playerMaterial);
     console.log('create player physics');
     this.dude.angle = 0;
+    this.dude.body.collides([playerCG, wallsCG]);
+    this.dude.body.collides([playerCG, objectsCG]);
 
     console.log('set player position');
 };
