@@ -17,27 +17,11 @@ $(function() {
      if ( event.data.charAt( 0 ) == 'd' ) {
          godown(event.data.substring(1));
         }
-     if ( event.data.charAt( 0 ) == 'x' ) {
-         playerx = event.data.substring(1);
-        }
-     if ( event.data.charAt( 0 ) == 'y' ) {
-         playery = event.data.substring(1);
-        }
-     if ( event.data.charAt( 0 ) == 's' ) {
-        shoot(event.data.substring(1), playerx, playery);
-        }
      if ( event.data.charAt( 0 ) == 'h' ) {
         hitme(event.data.substring(1));
         }
     }
   };
-
-$( "#gamescreen" ).mousedown(function() {
-    //  shoot
-    socket.send("x"+(game.input.x+ game.camera.x));
-    socket.send("y"+(game.input.y+ game.camera.y));
-    socket.send("s<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
-});
 
 window.playerhit = function(i) {
   socket.send("h"+i);

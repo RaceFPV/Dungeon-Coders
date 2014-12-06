@@ -24,9 +24,10 @@ Dude = function (index) {
     console.log('create player sprite and movement sprites');
 
     this.dude.id = index;
+    /* FIX ME
     this.dude = game.physics.p2.createCollisionGroup();
     game.physics.p2.updateBoundsCollisionGroup();
-    game.physics.p2.enable(this.dude);
+    game.physics.p2.enable(this.dude.body);
     //DEFINE PLAYER BODY
     this.dude.body.setRectangle(100,30);
     this.dude.body.debug = true;
@@ -36,6 +37,7 @@ Dude = function (index) {
     console.log('create player physics');
 
     this.dude.body.collideWorldBounds = true;
+    */
     this.dude.x = 150;
     this.dude.y = 150;
     this.dude.angle = 0;
