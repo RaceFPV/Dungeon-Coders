@@ -451,6 +451,21 @@
          "spacing":0,
          "tileheight":32,
          "tilewidth":32
+        }, 
+        {
+         "firstgid":901,
+         "image":"hyptosis_tile-art-batch-2.png",
+         "imageheight":960,
+         "imagewidth":960,
+         "margin":0,
+         "name":"hyptosis_tile-art-batch-2",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":32,
+         "tilewidth":32
         }],
  "tilewidth":32,
  "version":1,
