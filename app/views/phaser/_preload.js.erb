@@ -25,6 +25,12 @@ var godown = function(i) {
     playersList[i].dude.animations.play('down')
   }
 
+var killMe = function(i) {
+        console.log('KILL');
+	      playersList[i].alive = false;
+	      playersList[i].kill();
+}
+
 var width = $('#gamescreen').innerWidth() - 50;
 var height = $('#gamescreen').innerHeight();
 var game = new Phaser.Game(width, height, Phaser.AUTO, 'gamescreen', { preload: preload, create: clientSetup, update: update, render: render });
