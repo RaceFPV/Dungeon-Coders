@@ -1,2 +1,14 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="row">
+  <div class="col-xs-9" id="gamescreen"></div>
+  <script> <%= render partial: 'multiplayer/movement.js.erb' %> </script>
+  <script> <%= render partial: 'multiplayer/chat.js.erb' %> </script>
+  <script> <%= render partial: 'multiplayer/joined.js.erb' %> </script>
+  <div class="col-xs-3">
+    <ul id="chat">
+    </ul>
+    <%= form_for :message, url: home_index_path, method: 'post', html: {id: 'chatform'}, remote: true do |f| %>
+      <%= f.text_field :content %>
+      <%= f.submit "Send" %>
+    <% end %>
+  </div>
+</div>
