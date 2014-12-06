@@ -20,6 +20,9 @@ $(function() {
      if ( event.data.charAt( 0 ) == 'h' ) {
         hitme(event.data.substring(1));
         }
+     if ( event.data.charAt( 0 ) == 'a' ) {
+        attack(event.data.substring(1));
+        }
     }
   };
 
@@ -30,19 +33,23 @@ window.playerhit = function(i) {
 $("body").keydown(function(e) {
   if(e.keyCode == 37 || e.keyCode == 65 ) { // left
     //  Move to the left
-    socket.send("l<%= @thisplayer %>");
+    socket.send("l<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
   }
   else if(e.keyCode == 39 || e.keyCode == 68) { // right
     //  Move to the right
-    socket.send("r<%= @thisplayer %>");
+    socket.send("r<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
   }
   else if(e.keyCode == 38 || e.keyCode == 87) { // up
     //  Move up
-    socket.send("u<%= @thisplayer %>");
+    socket.send("u<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
   }
   else if(e.keyCode == 40 || e.keyCode == 83) { // down
     //  Move down
-    socket.send("d<%= @thisplayer %>");
+    socket.send("d<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
+  }
+  else if(e.keyCode == 32) {
+    //  Attack
+    socket.send("a<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
   }
 });
 });

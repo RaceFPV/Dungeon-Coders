@@ -27,6 +27,9 @@ var godown = function(i) {
     playersList[i].dude.body.y += 5;
     playersList[i].dude.animations.play('down')
   }
+var attack = function(i) {
+    playersList[i].dude.animations.stop();
+  }
 
 var killMe = function(i) {
         console.log('KILL');
