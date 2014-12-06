@@ -9,8 +9,11 @@
   <script> <%= render partial: 'multiplayer/joined.js.erb' %> </script>
   <div class="col-xs-3">
     <ul id="chat">
+      <% @messages.each do |x| %>
+        <li><%= x.name %> : <%= x.content %></li>
+      <% end %>
     </ul>
-    <%= form_for :message, url: home_index_path, method: 'post', html: {id: 'chatform'}, remote: true do |f| %>
+    <%= form_for :message, url: new_message_path, method: 'post', html: {id: 'chatform'}, remote: true do |f| %>
       <%= f.text_field :content %>
       <%= f.submit "Send" %>
     <% end %>
