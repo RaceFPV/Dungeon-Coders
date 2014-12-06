@@ -1,0 +1,49 @@
+Dude.prototype.update = function() {
+    if (this.cursor.left)
+    {
+        this.dude.angle -= 1;
+    }
+    else if (this.cursor.right)
+    {
+        this.dude.angle += 1;
+    }	
+    if (this.cursor.up)
+    {
+        //  The speed we'll travel at
+        this.currentSpeed = 300;
+    }
+    else
+    {
+        if (this.currentSpeed > 0)
+        {
+            this.currentSpeed -= 4;
+        }
+    }
+	
+    if (this.currentSpeed > 0)
+    {
+      game.physics.arcade.velocityFromRotation(this.dude.rotation, this.currentSpeed, this.dude.body.velocity);
+    }	
+	else
+	{
+		game.physics.arcade.velocityFromRotation(this.dude.rotation, 0, this.dude.body.velocity);
+	}
+};
+
+function update() {
+
+    for (var i in playersList) {
+		  if (!playersList[i]) continue;
+	  	var curDude = playersList[i].dude;
+		  for (var j in playersList) {
+			  if (!playersList[j]) continue;
+			  if (playersList[j].alive) {
+				  playersList[j].update();
+			  }
+		}
+}
+  }
+function render() {
+    //debug stuff
+    game.debug.cameraInfo(game.camera, 32, 32);
+}
