@@ -30,7 +30,7 @@ var height = $('#gamescreen').innerHeight();
 var game = new Phaser.Game(width, height, Phaser.AUTO, 'gamescreen', { preload: preload, create: clientSetup, update: update, render: render });
 
 function preload() {
-    game.load.tilemap('level',"assets/tilemap.json",null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('tiles',"assets/hyptosis_tile-art-batch-1.png");
-    game.load.spritesheet('dude',"assets/brandonTile.png",14,21);
+    game.load.tilemap('level',"assets/tileset/tilemap.json",null, Phaser.Tilemap.TILED_JSON);
+    game.load.image('tiles',"assets/tileset/hyptosis_tile-art-batch-1.png");
+    game.load.spritesheet('dude',"assets/tileset/brandonTile.png",14,21);
 }
