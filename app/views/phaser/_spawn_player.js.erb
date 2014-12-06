@@ -45,6 +45,7 @@ Dude = function (index) {
 
 var spawnPlayer = function(i) {
         console.log('SPAWN');
+        if (i == myId) return;
         var plyr = new Dude(i);
         playersList[i] = plyr;
         console.log(i);
