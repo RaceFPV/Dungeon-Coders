@@ -3,8 +3,12 @@ var clientSetup = function() {
 		//create() is moved here to make sure nothing is created before uniq id assignation
 		create();
 
-<% @players.uniq.each do |x| %>
-  spawnPlayer('<%= x %>');
+<% if @players %>
+  <% @players.uniq.each do |x| %>
+    <% if x != @thisplayer %>
+      spawnPlayer('<%= x %>');
+    <% end %>
+  <% end %>
 <% end %>
 }
 

@@ -23,10 +23,10 @@ $(function () {
     }
   }
   };
-    setTimeout(function(){
+    
       socket.send('j<%= truncate(current_or_guest_player.email, length: 15) %>');
       socket.send('s<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>');
-    },3000);
+    
 
   window.onunload = window.onbeforeunload = (function(){
     socket.send('l<%= truncate(current_or_guest_player.email, length: 15) %>');
