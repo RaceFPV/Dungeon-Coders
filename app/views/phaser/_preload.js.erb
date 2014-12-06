@@ -5,9 +5,7 @@ var clientSetup = function() {
 
 <% if @players %>
   <% @players.uniq.each do |x| %>
-    <% if x != @thisplayer %>
       spawnPlayer('<%= x %>');
-    <% end %>
   <% end %>
 <% end %>
   playersList[myId] = player;
