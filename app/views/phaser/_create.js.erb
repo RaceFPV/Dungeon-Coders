@@ -9,7 +9,7 @@ function create() {
     objectsCG = game.physics.p2.createCollisionGroup();
     wallsCG =  game.physics.p2.createCollisionGroup();
     playerCG = game.physics.p2.createCollisionGroup();
-    walls = game.physics.p2.convertCollisionObjects(map, "object",true);
+    walls = game.physics.p2.convertCollisionObjects(map, "collision",true);
     for(var wall in walls)
     {
 	    walls[wall].setCollisionGroup(wallsCG);
@@ -19,7 +19,7 @@ function create() {
     level = map.createLayer("background");
     level.fixedToCamera = true;
     level.resizeWorld();
-    layer2 = map.createLayer("layer2");
+    layer2 = map.createLayer("objects");
     layer2.resizeWorld();
     map.setCollisionBetween(1, 12);
     game.physics.p2.convertTilemap(map, level);

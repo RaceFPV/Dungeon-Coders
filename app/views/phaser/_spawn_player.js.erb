@@ -14,7 +14,7 @@ Dude = function (index) {
 
     console.log('set initial player variables');
     //player settings
-    this.dude = game.add.sprite(game.world.centerX, game.world.centerY, 'dude');
+    this.dude = game.add.sprite(100, 100, 'dude');
     this.dude.animations.add('down', [0, 1, 2], 10, true);
     this.dude.animations.add('up', [3, 4, 5], 10, true);
     this.dude.animations.add('right', [6, 7, 8], 10, true);
