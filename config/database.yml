@@ -9,18 +9,39 @@ default: &default
   encoding: unicode
   pool: 5000
   timeout: 5000
+  username: dungeoncoders
+  password: h@ckp40F
+  host: localhost
 
 development:
-  <<: *default
-  database: db/development.pg
+  adapter: postgresql
+  encoding: unicode
+  pool: 5000
+  timeout: 5000
+  username: dungeoncoders
+  password: h@ckp40F
+  database: dungeoncoders_development
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: db/test.pg
+  adapter: postgresql
+  encoding: unicode
+  pool: 5000
+  timeout: 5000
+  username: dungeoncoders
+  password: h@ckp40F
+  database: dungeoncoders_test
+  host: localhost
 
 production:
-  <<: *default
-  database: db/production.pg
+  adapter: postgresql
+  encoding: unicode
+  pool: 5000
+  timeout: 5000
+  username: dungeoncoders
+  password: h@ckp40F
+  database: dungeoncoders_production
+  host: localhost
