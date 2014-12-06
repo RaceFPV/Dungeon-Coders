@@ -1,6 +1,6 @@
 function create() {
     //  We need to enable physics on the player and set world bounds
-    game.world.setBounds(0, 0, 2500, 2500);
+    game.world.setBounds(0, 0, 1600, 1600);
     game.physics.startSystem(Phaser.Physics.P2JS);
     game.physics.p2.setImpactEvents(true);
 
@@ -10,8 +10,8 @@ function create() {
     map.addTilesetImage('hyptosis_tile-art-batch-1','tiles');
     var objectsCG = game.physics.p2.createCollisionGroup();
     var wallsCG =  game.physics.p2.createCollisionGroup();
-    var playerCG = game.physics.p2.createCollisionGroup();
-
+    playerCG = game.physics.p2.createCollisionGroup();
+    this.playerMaterial = this.game.physics.p2.createMaterial('player');
     var walls = game.physics.p2.convertCollisionObjects(map, "object",true);
     for(var wall in walls)
     {
@@ -31,8 +31,8 @@ function create() {
 	  dude = player.dude;
 
     //camera system
-    game.camera.follow(dude);
-    game.camera.focusOnXY(150, 150);
+    game.camera.setBoundsToWorld();
+    game.camera.follow(player.dude);
 
     //controller system
     cursors = game.input.keyboard.createCursorKeys();
