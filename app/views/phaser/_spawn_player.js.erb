@@ -1,0 +1,53 @@
+// for when new players join and leave
+Dude = function (index) {
+
+    var x = 150;
+    var y = 150;
+
+    this.game = game;
+    this.health = 30;
+    this.player = player;
+    this.points = 0;
+
+	  this.currentSpeed = 0;
+    this.alive = true;
+
+    console.log('set initial player variables');
+    //player settings
+    this.dude = game.add.sprite(game.world.centerX, game.world.centerY, 'dude');
+    this.dude.animations.add('down', [0, 1, 2], 10, true);
+    this.dude.animations.add('up', [3, 4, 5], 10, true);
+    this.dude.animations.add('right', [6, 7, 8], 10, true);
+    this.dude.animations.add('left', [9, 10, 11], 10, true);
+    this.dude.anchor.set(0.5);
+
+    console.log('create player sprite and movement sprites');
+
+    this.dude.id = index;
+    this.dude = game.physics.p2.createCollisionGroup();
+    game.physics.p2.updateBoundsCollisionGroup();
+    game.physics.p2.enable(this.dude);
+    //DEFINE PLAYER BODY
+    this.dude.body.setRectangle(100,30);
+    this.dude.body.debug = true;
+    this.dude.body.mass = 1;
+    this.dude.body.setCollisionGroup(this.dude);
+
+    console.log('create player physics');
+
+    this.dude.body.collideWorldBounds = true;
+    this.dude.x = 150;
+    this.dude.y = 150;
+    this.dude.angle = 0;
+
+    console.log('set player position');
+};
+
+
+
+var spawnPlayer = function(i) {
+        console.log('SPAWN');
+        var plyr = new Dude(i);
+        playersList[i] = plyr;
+        console.log(i);
+}
