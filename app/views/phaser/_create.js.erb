@@ -21,15 +21,18 @@ function create() {
     //  Our tiled scrolling background
     land = map.createLayer("background");
     land.fixedToCamera = true;
+    land.resizeWorld();
     layer2 = map.createLayer("layer2");
     layer2.resizeWorld();
-    land.resizeWorld();
+    map.setCollisionBetween(1, 12);
+    game.physics.p2.convertTilemap(map, land);
 
 	  player = new Dude(myId);
 	  playersList[myId] = player;
     console.log(player + 'created');
 	  dude = player.dude;
 
+    game.physics.p2.setBoundsToWorld(true, true, true, true, false);
     //camera system
     game.camera.setBoundsToWorld();
     game.camera.follow(player.dude);

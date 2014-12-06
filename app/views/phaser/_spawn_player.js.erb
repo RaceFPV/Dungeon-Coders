@@ -24,18 +24,16 @@ Dude = function (index) {
     console.log('create player sprite and movement sprites');
 
     this.dude.id = index;
-    this.game.physics.p2.enable(this.dude);
+    this.game.physics.p2.enable(this.dude, true);
+    this.dude.body.setCircle(15);
     //DEFINE PLAYER BODY
     this.dude.scale.setTo(1.2, 1.2);
     this.dude.body.setZeroDamping();
     this.dude.body.fixedRotation = true;
-    this.dude.body.collideWorldBounds = true;
     this.dude.body.setCollisionGroup(playerCG);
     this.dude.body.mass = 5;
     this.dude.body.setMaterial(this.playerMaterial);
     console.log('create player physics');
-    this.dude.x = 150;
-    this.dude.y = 150;
     this.dude.angle = 0;
 
     console.log('set player position');
