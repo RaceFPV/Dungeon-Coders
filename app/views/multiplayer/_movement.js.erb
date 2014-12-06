@@ -28,19 +28,19 @@ window.playerhit = function(i) {
 };
 
 $("body").keydown(function(e) {
-  if(e.keyCode == 37) { // left
+  if(e.keyCode == 37 || e.keyCode == 65 ) { // left
     //  Move to the left
     socket.send("l<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
   }
-  else if(e.keyCode == 39) { // right
+  else if(e.keyCode == 39 || e.keyCode == 68) { // right
     //  Move to the right
     socket.send("r<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
   }
-  else if(e.keyCode == 38) { // up
+  else if(e.keyCode == 38 || e.keyCode == 87) { // up
     //  Move up
     socket.send("u<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
   }
-  else if(e.keyCode == 40) { // down
+  else if(e.keyCode == 40 || e.keyCode == 83) { // down
     //  Move down
     socket.send("d<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
   }
