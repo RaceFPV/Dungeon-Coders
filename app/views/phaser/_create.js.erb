@@ -8,8 +8,8 @@ function create() {
     //Tilemap and CollisionGroup
     map = game.add.tilemap('level');
     map.addTilesetImage('hyptosis_tile-art-batch-1','tiles');
-    var objectsCG = game.physics.p2.createCollisionGroup();
-    var wallsCG =  game.physics.p2.createCollisionGroup();
+    objectsCG = game.physics.p2.createCollisionGroup();
+    wallsCG =  game.physics.p2.createCollisionGroup();
     playerCG = game.physics.p2.createCollisionGroup();
     this.playerMaterial = this.game.physics.p2.createMaterial('player');
     var walls = game.physics.p2.convertCollisionObjects(map, "object",true);
