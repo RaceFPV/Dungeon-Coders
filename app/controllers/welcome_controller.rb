@@ -6,9 +6,6 @@ class WelcomeController < ApplicationController
     @@players += [current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')]
     @players = @@players
     @thisplayer = current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')
-    if @players.include?(@thisplayer)
-      @players = @players - [@thisplayer]
-    end
   end
 
   def new_message
