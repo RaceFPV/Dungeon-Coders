@@ -30,7 +30,12 @@ window.playerjoin = function(i) {
 };
 
   window.onunload = window.onbeforeunload = (function(){
-    socket.send('l<%= truncate(current_or_guest_player.email, length: 15) %>');
-    socket.send('d<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>');
+<% if player_signed_in? %>
+    socket.send('l<%= truncate(current_player.email, length: 15) %>');
+    socket.send('d<%= current_player.email.gsub(/[^0-9A-Za-z]/, '')%>');
+<% else %>
+    socket.send('l<%= @thisplayer %>');
+    socket.send('d<%= @thisplayer %>');
+<% end %>
   });
 });

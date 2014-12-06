@@ -23,9 +23,13 @@
             <ul class="dropdown-menu" role="menu">
             <li><a href="#">Settings</a></li>
             <li class="divider"></li>
-            <li><a href="#">Sign up</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Sign in</a></li>
+            <% if player_signed_in? %>
+               <li><%= link_to 'Sign Out', destroy_player_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to 'Sign Up', new_player_registration_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to 'Sign In', new_player_session_path %></li>
+           <% end %>
           </ul>
           </li>
           </ul>
