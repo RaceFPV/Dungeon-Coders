@@ -1,0 +1,64 @@
+$(function() {
+  var socket;
+  var playerx;
+  var playery;
+  socket = new WebSocket("ws://" + window.location.host + "/movement");
+  socket.onmessage = function(event) {
+    if (event.data.length) {
+     if ( event.data.charAt( 0 ) == 'l' ) {
+         goleft(event.data.substring(1));
+        }
+     if ( event.data.charAt( 0 ) == 'r' ) {
+         goright(event.data.substring(1));
+        }
+     if ( event.data.charAt( 0 ) == 'u' ) {
+         goup(event.data.substring(1));
+        }
+     if ( event.data.charAt( 0 ) == 'd' ) {
+         godown(event.data.substring(1));
+        }
+     if ( event.data.charAt( 0 ) == 'x' ) {
+         playerx = event.data.substring(1);
+        }
+     if ( event.data.charAt( 0 ) == 'y' ) {
+         playery = event.data.substring(1);
+        }
+     if ( event.data.charAt( 0 ) == 's' ) {
+        shoot(event.data.substring(1), playerx, playery);
+        }
+     if ( event.data.charAt( 0 ) == 'h' ) {
+        hitme(event.data.substring(1));
+        }
+    }
+  };
+
+$( "#gamescreen" ).mousedown(function() {
+    //  shoot
+    socket.send("x"+(game.input.x+ game.camera.x));
+    socket.send("y"+(game.input.y+ game.camera.y));
+    socket.send("s<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
+});
+
+window.playerhit = function(i) {
+  socket.send("h"+i);
+};
+
+$("body").keydown(function(e) {
+  if(e.keyCode == 37) { // left
+    //  Move to the left
+    socket.send("l<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
+  }
+  else if(e.keyCode == 39) { // right
+    //  Move to the right
+    socket.send("r<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
+  }
+  else if(e.keyCode == 38) { // up
+    //  Move up
+    socket.send("u<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
+  }
+  else if(e.keyCode == 40) { // down
+    //  Move down
+    socket.send("d<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>");
+  }
+});
+});

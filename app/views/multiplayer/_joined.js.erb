@@ -1,0 +1,35 @@
+$(function () {
+  var socket;
+  socket = new WebSocket("ws://" + window.location.host + "/joined");
+  socket.onmessage = function(event) {
+    if (event.data.length) {
+     if ( event.data.charAt( 0 ) == 'j' ) {
+      var string = event.data+' has connected';
+      string = string.substring(1);
+      toastr.success(string);
+    }
+     else if ( event.data.charAt( 0 ) == 'l' ) {
+      var string = event.data+' has disconnected';
+      string = string.substring(1);
+      toastr.error(string);
+    }
+    else if (event.data.charAt(0) == 's') {
+      string = event.data.substring(1);
+      spawnPlayer(string);
+    }
+    else if (event.data.charAt(0) == 'd') {
+      string = event.data.substring(1);
+      killMe(string);
+    }
+  }
+  };
+    setTimeout(function(){
+      socket.send('j<%= truncate(current_or_guest_player.email, length: 15) %>');
+      socket.send('s<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>');
+    },3000);
+
+  window.onunload = window.onbeforeunload = (function(){
+    socket.send('l<%= truncate(current_or_guest_player.email, length: 15) %>');
+    socket.send('d<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>');
+  });
+});
