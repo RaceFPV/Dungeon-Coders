@@ -24,10 +24,8 @@ function create() {
     map.setCollisionBetween(1, 12);
     game.physics.p2.convertTilemap(map, level);
     //create the teleporters
-    var shape = game.add.graphics(0, 0);  //init rect
-    shape.beginFill(0xFFFF0B, 1)
-    level1teleport = shape.drawRect(165,225,25,25);
-    level1teleport = level1teleport.getBounds();
+    level1teleport = new Phaser.Rectangle(165, 225, 25, 25);
+    hometeleport1 = new Phaser.Rectangle(2660,230,25,25);
 
 	  player = new Dude(myId);
 	  playersList[myId] = player;

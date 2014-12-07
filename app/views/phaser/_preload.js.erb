@@ -41,6 +41,10 @@ var teleportplayer1 = function(i) {
   return Phaser.Rectangle.intersects(i.body, level1teleport);
 }
 
+var teleportplayer1home = function(i) {
+  return Phaser.Rectangle.intersects(i.body, hometeleport1);
+}
+
 
 var width = $('#gamescreen').innerWidth() - 50;
 var height = $('#gamescreen').innerHeight();
