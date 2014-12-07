@@ -26,31 +26,31 @@ var godown = function(i) {
   }
 var attack = function(i) {
   //check for npc dialog
-  if (player1npclocation(playersList[i].dude)) {
+  if (playernpclocation(level1npc, playersList[i].dude)) {
     dialog.x = playersList[i].dude.body.x-50;
     dialog.y = playersList[i].dude.body.y+10;
     dialog.setText('"Begin your journey into the world of code and numbers."');
     playersList[i].dude.animations.stop();
   }
-  else if (player2npclocation(playersList[i].dude)) {
+  else if (playernpclocation(level2npc, playersList[i].dude)) {
     dialog.x = playersList[i].dude.body.x-50;
     dialog.y = playersList[i].dude.body.y+10;
     dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
     playersList[i].dude.animations.stop();
   }
-  else if (player3npclocation(playersList[i].dude)) {
+  else if (playernpclocation(level3npc, playersList[i].dude)) {
     dialog.x = playersList[i].dude.body.x-50;
     dialog.y = playersList[i].dude.body.y+10;
     dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
     playersList[i].dude.animations.stop();
   }
-  else if (player4npclocation(playersList[i].dude)) {
+  else if (playernpclocation(level4npc, playersList[i].dude)) {
     dialog.x = playersList[i].dude.body.x-50;
     dialog.y = playersList[i].dude.body.y+10;
     dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
     playersList[i].dude.animations.stop();
   }
-  else if (player5npclocation(playersList[i].dude)) {
+  else if (playernpclocation(level5npc, playersList[i].dude)) {
     dialog.x = playersList[i].dude.body.x-50;
     dialog.y = playersList[i].dude.body.y+10;
     dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
@@ -79,24 +79,8 @@ teleportplayer1home = function(i) {
 //end teleporter location check
 
 //npc location check
-var player1npclocation = function(i) {
-  return Phaser.Rectangle.contains(level1npc, i.body.x, i.body.y);
-}
-
-var player2npclocation = function(i) {
-  return Phaser.Rectangle.contains(level2npc, i.body.x, i.body.y);
-}
-
-var player3npclocation = function(i) {
-  return Phaser.Rectangle.contains(level3npc, i.body.x, i.body.y);
-}
-
-var player4npclocation = function(i) {
-  return Phaser.Rectangle.contains(level4npc, i.body.x, i.body.y);
-}
-
-var player5npclocation = function(i) {
-  return Phaser.Rectangle.contains(level5npc, i.body.x, i.body.y);
+var playernpclocation = function(x, i) {
+  return Phaser.Rectangle.contains(x, i.body.x, i.body.y);
 }
 //end npc location check
 
