@@ -24,8 +24,8 @@ Dude = function (index) {
     console.log('create player sprite and movement sprites');
 
     this.dude.id = index;
-    this.game.physics.p2.enable(this.dude, true);
-    this.dude.body.setCircle(15);
+    this.game.physics.p2.enable(this.dude, false);
+    this.dude.body.setCircle(12);
     //DEFINE PLAYER BODY
     this.dude.scale.setTo(1.2, 1.2);
     this.dude.body.setZeroDamping();
