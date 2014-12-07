@@ -1,8 +1,11 @@
 function Menu() {
-    titleText = game.add.bitmapText(game.world.centerX-250, game.world.centerY-150, 'carrier_command', 'Dungeon Coders', 34);
-    titleText = game.add.bitmapText(game.world.centerX-180, game.world.centerY+100, 'carrier_command', 'W,A,S,D to move', 23);
-    titleText = game.add.bitmapText(game.world.centerX-200, game.world.centerY+135, 'carrier_command', 'SPACE to interact', 23);
-    startText = game.add.bitmapText(game.world.centerX-125, game.world.centerY-50, 'carrier_command', 'Click here to start', 15);
+    titleText = game.add.bitmapText(game.world.centerX-280, game.world.centerY-200, 'carrier_command', 'Dungeon Coders', 34);
+    titleText2 = game.add.bitmapText(game.world.centerX-210, game.world.centerY+150, 'carrier_command', 'W,A,S,D to move', 23);
+    titleText2.tint = 0x334455;
+    titleText3 = game.add.bitmapText(game.world.centerX-230, game.world.centerY+185, 'carrier_command', 'SPACE to interact', 23);
+    titleText3.tint = 0x334455;
+    startText = game.add.bitmapText(game.world.centerX-155, game.world.centerY-50, 'carrier_command', 'Click here to start', 15);
+    startText.tint = 0x339933;
     startText.inputEnabled = true;
     startText.events.onInputDown.add(Game);
 }
