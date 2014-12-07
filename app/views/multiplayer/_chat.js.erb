@@ -13,6 +13,10 @@ $(function() {
     event.preventDefault();
     $input = $(this).find("#message_content");
     socket.send($input.val());
-    return $input.val(null);
-  });
+    $(this).bind("ajax:complete", function(event,xhr,status){
+      $('#message_content').val('');
+    }
+ ) });
+
+
 });
