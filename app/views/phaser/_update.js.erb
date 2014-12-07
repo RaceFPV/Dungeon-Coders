@@ -9,7 +9,7 @@ Dude.prototype.update = function() {
           this.dude.body.y = 230;
         }
         // check if player is standing on teleporter 1 home
-        else if (teleportplayer1home(this.dude)) {
+        if (teleportplayer1home(this.dude)) {
           this.dude.body.x = 500;
           this.dude.body.y = 500;
         }
