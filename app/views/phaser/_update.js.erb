@@ -1,19 +1,29 @@
 Dude.prototype.update = function() {
         if (this.currentSpeed > 0)
         {
-            this.currentSpeed -= 4;
+            this.currentSpeed -= 7;
         }
-    if (this.currentSpeed > 0)
-    {
-      //game.physics.arcade.velocityFromRotation(this.dude.rotation, this.currentSpeed, this.dude.body.velocity);
-    }
-	else
-	{
-		//game.physics.arcade.velocityFromRotation(this.dude.rotation, 0, this.dude.body.velocity);
-	}
+        // check if player is standing on teleporter 1
+        if (teleportplayer1(this.dude)) {
+          this.dude.body.x = 2690;
+          this.dude.body.y = 225;
+        }
+        // check if player is standing on teleporter 1 home
+        if (teleportplayer1home(this.dude)) {
+          this.dude.body.x = 300;
+          this.dude.body.y = 300;
+        }
+        this.dude.body.velocity.x = 0;
+        this.dude.body.velocity.y = 0;
 };
 
 function update() {
+  // make the score text always follow where the camera is
+  if (text) {
+  text.x = game.camera.x;
+  text.y = game.camera.y;
+  text.setText("Health:" + playersList[myId].health);
+  }
 
     for (var i in playersList) {
 		  if (!playersList[i]) continue;
@@ -28,5 +38,13 @@ function update() {
   }
 function render() {
     //debug stuff
-    game.debug.cameraInfo(game.camera, 32, 32);
+    //game.debug.cameraInfo(game.camera, 32, 32);
+    //game.debug.bodyInfo(player.dude.body, 32, 32)
+    //game.debug.geom(hometeleport1,'#0fffff');
+    //game.debug.geom(level1teleport,'#0fffff');
+    //game.debug.geom(level1npc, '#0fffff');
+    //game.debug.geom(level2npc, '#0fffff');
+    //game.debug.geom(level3npc, '#0fffff');
+    //game.debug.geom(level4npc, '#0fffff');
+    //game.debug.geom(level5npc, '#0fffff');
 }

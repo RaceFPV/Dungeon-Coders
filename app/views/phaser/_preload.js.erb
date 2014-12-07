@@ -1,29 +1,66 @@
 //this function will handle client communication with the server
 var clientSetup = function() {
 		//create() is moved here to make sure nothing is created before uniq id assignation
-		create();
-
-<% @players.uniq.each do |x| %>
-  spawnPlayer('<%= x %>');
-<% end %>
+		Menu();
 }
 
 var goleft = function(i) {
-    playersList[i].dude.x -= 5;
+    playersList[i].dude.body.x -= 4;
     playersList[i].dude.animations.play('left');
+    dialog.setText("")
   }
 var goright = function(i) {
-    playersList[i].dude.x += 5;
+    playersList[i].dude.body.x += 4;
     playersList[i].dude.animations.play('right');
+    dialog.setText("")
   }
 var goup = function(i) {
-    playersList[i].dude.y -= 5;
+    playersList[i].dude.body.y -= 4;
     playersList[i].dude.animations.play('up')
+    dialog.setText("")
   }
 var godown = function(i) {
-    playersList[i].dude.y += 5;
+    playersList[i].dude.body.y += 4;
     playersList[i].dude.animations.play('down')
+    dialog.setText("")
   }
+var attack = function(i) {
+  //check for npc dialog
+  if (playernpclocation(level1npc, playersList[i].dude)) {
+    dialog.x = playersList[i].dude.body.x-50;
+    dialog.y = playersList[i].dude.body.y+10;
+    dialog.setText('"Begin your journey into the world of code and numbers."');
+    playersList[i].dude.animations.stop();
+  }
+  else if (playernpclocation(level2npc, playersList[i].dude)) {
+    dialog.x = playersList[i].dude.body.x-50;
+    dialog.y = playersList[i].dude.body.y+10;
+    dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
+    playersList[i].dude.animations.stop();
+  }
+  else if (playernpclocation(level3npc, playersList[i].dude)) {
+    dialog.x = playersList[i].dude.body.x-50;
+    dialog.y = playersList[i].dude.body.y+10;
+    dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
+    playersList[i].dude.animations.stop();
+  }
+  else if (playernpclocation(level4npc, playersList[i].dude)) {
+    dialog.x = playersList[i].dude.body.x-50;
+    dialog.y = playersList[i].dude.body.y+10;
+    dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
+    playersList[i].dude.animations.stop();
+  }
+  else if (playernpclocation(level5npc, playersList[i].dude)) {
+    dialog.x = playersList[i].dude.body.x-50;
+    dialog.y = playersList[i].dude.body.y+10;
+    dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
+    playersList[i].dude.animations.stop();
+  }
+  //end npc dialog check
+  else {
+    playersList[i].dude.animations.stop();
+  }
+}
 
 var killMe = function(i) {
         console.log('KILL');
@@ -31,12 +68,44 @@ var killMe = function(i) {
 	      playersList[i].kill();
 }
 
+//teleporter location check
+var teleportplayer1 = function(i) {
+  return Phaser.Rectangle.contains(level1teleport, i.body.x, i.body.y);
+}
+
+teleportplayer1home = function(i) {
+  return Phaser.Rectangle.contains(hometeleport1, i.body.x, i.body.y);
+}
+//end teleporter location check
+
+//npc location check
+var playernpclocation = function(x, i) {
+  return Phaser.Rectangle.contains(x, i.body.x, i.body.y);
+}
+//end npc location check
+
+
 var width = $('#gamescreen').innerWidth() - 50;
 var height = $('#gamescreen').innerHeight();
-var game = new Phaser.Game(width, height, Phaser.AUTO, 'gamescreen', { preload: preload, create: clientSetup, update: update, render: render });
+var game = new Phaser.Game(width, height, Phaser.AUTO, 'gamescreen', { preload: preload, loadUpdate: loadUpdate, create: clientSetup, update: update, render: render });
 
 function preload() {
-    game.load.tilemap('level',"assets/tileset/tilemap.json",null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('tiles',"assets/tileset/hyptosis_tile-art-batch-1.png");
-    game.load.spritesheet('dude',"assets/tileset/brandonTile.png",14,21);
+
+  this.preloadBar = game.add.graphics(0, 50);
+  this.preloadBar.lineStyle(3, 0xffffff, 1);
+  this.preloadBar.moveTo(0, 0);
+  this.preloadBar.lineTo(game.width+100, 0);
+  this.preloadBar.scale.x = 0; // set the bar to the beginning position
+
+    game.load.tilemap('level',"assets/tileset/levelbeforecrash.json",null, Phaser.Tilemap.TILED_JSON);
+    game.load.image('tiles1',"assets/tileset/hyptosis_tile-art-batch-1.png");
+    game.load.image('tiles2',"assets/tileset/hyptosis_tile-art-batch-2.png");
+    game.load.spritesheet('dude',"assets/tileset/playersprite.png",100,146);
+    game.load.bitmapFont('carrier_command', 'assets/fonts/carrier_command.png', 'assets/fonts/carrier_command.xml');
+}
+
+function loadUpdate() {
+  // every frame during loading, set the scale.x of the bar to the progress (an integer between 0
+  // and 100) divided by 100 to give a float between 0 and 1
+  this.preloadBar.scale.x = game.load.progress * 0.01;
 }

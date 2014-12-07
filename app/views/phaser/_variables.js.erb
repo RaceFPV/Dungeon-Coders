@@ -1,8 +1,22 @@
-var myId = '<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '') %>';
+var myId = '<%= @thisplayer.gsub(/[^0-9A-Za-z]/, '') %>';
 
 var land;
 var player;
 var dude;
+var health;
+var text;
 var velocity = 100;
 var playersList = {};
 var cursors;
+var PlayerCG;
+var wallsCG;
+var objectsCG;
+var walls;
+var level1teleport;
+var hometeleport1;
+var level1npc;
+var level2npc;
+var level3npc;
+var level4npc;
+var level5npc;
+var dialog;

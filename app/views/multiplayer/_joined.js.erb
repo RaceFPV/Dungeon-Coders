@@ -4,7 +4,7 @@ $(function () {
   socket.onmessage = function(event) {
     if (event.data.length) {
      if ( event.data.charAt( 0 ) == 'j' ) {
-      var string = event.data+' has connected';
+      var string = event.data.split("@")[0]+' has connected';
       string = string.substring(1);
       toastr.success(string);
     }
@@ -23,13 +23,14 @@ $(function () {
     }
   }
   };
-    setTimeout(function(){
-      socket.send('j<%= truncate(current_or_guest_player.email, length: 15) %>');
-      socket.send('s<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>');
-    },3000);
+    
+window.playerjoin = function(i) {
+      socket.send('j'+i);
+      socket.send('s'+i);
+};
 
   window.onunload = window.onbeforeunload = (function(){
-    socket.send('l<%= truncate(current_or_guest_player.email, length: 15) %>');
-    socket.send('d<%= current_or_guest_player.email.gsub(/[^0-9A-Za-z]/, '')%>');
+    socket.send('l<%= truncate(get_player.email, length: 15) %>');
+    socket.send('d<%= get_player.email.gsub(/[^0-9A-Za-z]/, '')%>');
   });
 });

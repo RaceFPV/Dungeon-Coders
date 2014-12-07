@@ -1,39 +1,85 @@
-function create() {
-    //  We need to enable physics on the player and set world bounds
-    game.world.setBounds(0, 0, 2500, 2500);
-    game.physics.startSystem(Phaser.Physics.P2JS);
-    game.physics.p2.setImpactEvents(true);
+function Menu() {
+    titleText = game.add.bitmapText(game.world.centerX-280, game.world.centerY-200, 'carrier_command', 'Dungeon Coders', 34);
+    titleText2 = game.add.bitmapText(game.world.centerX-210, game.world.centerY+150, 'carrier_command', 'W,A,S,D to move', 23);
+    titleText2.tint = 0x334455;
+    titleText3 = game.add.bitmapText(game.world.centerX-230, game.world.centerY+185, 'carrier_command', 'SPACE to interact', 23);
+    titleText3.tint = 0x334455;
+    startText = game.add.bitmapText(game.world.centerX-155, game.world.centerY-50, 'carrier_command', 'Click here to start', 15);
+    startText.tint = 0x339933;
+    startText.inputEnabled = true;
+    startText.events.onInputDown.add(Game);
+}
 
+function Game() {
+
+        //  We need to enable physics on the player and set world bounds
+    game.physics.startSystem(Phaser.Physics.P2JS);
 
     //Tilemap and CollisionGroup
     map = game.add.tilemap('level');
-    map.addTilesetImage('hyptosis_tile-art-batch-1','tiles');
-    var objectsCG = game.physics.p2.createCollisionGroup();
-    var wallsCG =  game.physics.p2.createCollisionGroup();
-    var playerCG = game.physics.p2.createCollisionGroup();
-
-    var walls = game.physics.p2.convertCollisionObjects(map, "object",true);
+    map.addTilesetImage('hyptosis_tile-art-batch-1','tiles1');
+    map.addTilesetImage('hyptosis_tile-art-batch-2','tiles2');
+    objectsCG = game.physics.p2.createCollisionGroup();
+    wallsCG =  game.physics.p2.createCollisionGroup();
+    playerCG = game.physics.p2.createCollisionGroup();
+    walls = game.physics.p2.convertCollisionObjects(map, "collision", true);
     for(var wall in walls)
     {
-	    walls[wall].setCollisionGroup(wallsCG);
-	    walls[wall].collides(playerCG);
+        walls[wall].setCollisionGroup(wallsCG);
+        walls[wall].collides(playerCG);
     }
     //  Our tiled scrolling background
-    land = map.createLayer("background");
-    land.fixedToCamera = true;
-    layer2 = map.createLayer("layer2");
+    level = map.createLayer("background");
+    level.fixedToCamera = true;
+    level.resizeWorld();
+    layer2 = map.createLayer("objects");
     layer2.resizeWorld();
-    land.resizeWorld();
+    map.setCollisionBetween(1, 12);
+    game.physics.p2.convertTilemap(map, level);
+    //create the teleporters
+    level1teleport = new Phaser.Rectangle(165, 225, 25, 25);
+    hometeleport1 = new Phaser.Rectangle(2660,140,25,25);
 
-	  player = new Dude(myId);
-	  playersList[myId] = player;
+    //create the dialog locations
+    level1npc = new Phaser.Rectangle(230, 226, 28, 46)
+    level2npc = new Phaser.Rectangle(580, 226, 30, 46)
+    level3npc = new Phaser.Rectangle(934, 226, 30, 46)
+    level4npc = new Phaser.Rectangle(255, 476, 35, 46)
+    level5npc = new Phaser.Rectangle(735, 476, 35, 46)
+
+      player = new Dude(myId);
+      playersList[myId] = player;
     console.log(player + 'created');
-	  dude = player.dude;
+      dude = player.dude;
 
+    game.physics.p2.setBoundsToWorld(true, true, true, true, false);
     //camera system
-    game.camera.follow(dude);
-    game.camera.focusOnXY(150, 150);
+    game.camera.follow(player.dude);
 
-    //controller system
-    cursors = game.input.keyboard.createCursorKeys();
+    //announce us as a new player
+    playerjoin(myId);
+
+    //Instructions
+    //bmpText = game.add.bitmapText(10, 100, 'carrier_command','Drag me around !',12);
+
+
+	  // create our score text in the top left corner
+    text = game.add.text(game.camera.x,game.camera.y, "Score: 0", {
+        font: "24px carrier_command",
+        fill: "#ffffff",
+        align: "center"
+    });
+    //create our dialog box at the bottom
+    dialog = game.add.text(0,0, "", {
+        font: "16px carrier_command",
+        fill: "#ffffff",
+        align: "center"
+    });
+
+    //spawn the other players on the server
+    <% if @players %>
+      <% @players.uniq.each do |x| %>
+        spawnPlayer('<%= x %>');
+      <% end %>
+    <% end %>
 }

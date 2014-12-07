@@ -3,7 +3,7 @@ $(function() {
   socket = new WebSocket("ws://" + window.location.host + "/chat");
   socket.onmessage = function(event) {
     if (event.data.length) {
-      $("#chat").append("<%= current_or_guest_player.email %> : " + event.data + "<br>");
+      $("#chat").append("<%= @thisplayer %> : " + event.data + "<br>");
       document.getElementById('chat').scrollTop = 9999999;
     }
   };
@@ -13,6 +13,10 @@ $(function() {
     event.preventDefault();
     $input = $(this).find("#message_content");
     socket.send($input.val());
-    return $input.val(null);
-  });
+    $(this).bind("ajax:complete", function(event,xhr,status){
+      $('#message_content').val('');
+    }
+ ) });
+
+
 });
