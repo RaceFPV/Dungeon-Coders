@@ -11,11 +11,20 @@
     <%= render partial: 'multiplayer/joined.js.erb' %>
   </script>
   <div class="col-xs-3">
-    <ul id="chat">
+    <div id='messagebox'>
+    <table class='table table-striped'>
+      <tbody>
       <% @messages.each do |x| %>
-        <li><%= x.name %> : <%= x.content %></li>
+        <tr>
+          <td><%= x.name %></td> <td><%= x.content %></td>
+        </tr>
       <% end %>
-    </ul>
+      </tbody>
+    </table>
+    </div>
+   
+    
+    
     <%= form_for :message, url: new_message_path, method: 'post', html: {id: 'chatform'}, remote: true do |f| %>
       <%= f.text_field :content %>
       <%= f.submit "Send" %>

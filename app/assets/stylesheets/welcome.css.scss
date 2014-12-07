@@ -13,9 +13,30 @@ main {
 #chat {
   height: 85vh;
   /* overflow-y: auto; */
-  width: 95%;
+  width: 100%;
 }
 
 #gamescreen {
   height: 92vh;
+}
+
+#messagebox{
+  max-height: 600px;
+  overflow-y: scroll;
+  margin-right:25px;
+  margin-top: 25px;
+  border: 1px dotted #111;
+}
+
+#chatform{
+  margin-top: 25px;
+  width:100%;
+}
+
+#chatform input[type=submit]{
+  width:25%;
+}
+
+#message_content{
+  width:50%;
 }
