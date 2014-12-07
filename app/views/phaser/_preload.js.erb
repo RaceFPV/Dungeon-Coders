@@ -7,22 +7,34 @@ var clientSetup = function() {
 var goleft = function(i) {
     playersList[i].dude.body.x -= 4;
     playersList[i].dude.animations.play('left');
+    dialog.setText("")
   }
 var goright = function(i) {
     playersList[i].dude.body.x += 4;
     playersList[i].dude.animations.play('right');
+    dialog.setText("")
   }
 var goup = function(i) {
     playersList[i].dude.body.y -= 4;
     playersList[i].dude.animations.play('up')
+    dialog.setText("")
   }
 var godown = function(i) {
     playersList[i].dude.body.y += 4;
     playersList[i].dude.animations.play('down')
+    dialog.setText("")
   }
 var attack = function(i) {
+  if (player1npclocation(playersList[i].dude)) {
+    dialog.x = playersList[i].dude.body.x-50;
+    dialog.y = playersList[i].dude.body.y+10;
+    dialog.setText('"Begin your journey into the world of code and numbers"');
     playersList[i].dude.animations.stop();
   }
+  else {
+    playersList[i].dude.animations.stop();
+  }
+}
 
 var killMe = function(i) {
         console.log('KILL');
@@ -32,6 +44,10 @@ var killMe = function(i) {
 
 var teleportplayer1 = function(i) {
   return Phaser.Rectangle.contains(level1teleport, i.body.x, i.body.y);
+}
+
+var player1npclocation = function(i) {
+  return Phaser.Rectangle.contains(level1npc, i.body.x, i.body.y);
 }
 
 teleportplayer1home = function(i) {
