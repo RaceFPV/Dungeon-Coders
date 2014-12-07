@@ -4,6 +4,7 @@
 main {
   margin-top: 73px;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .navbar {
@@ -11,17 +12,17 @@ main {
 }
 
 #chat {
-  height: 85vh;
+  height: 92vh;
   /* overflow-y: auto; */
   width: 100%;
 }
 
 #gamescreen {
-  height: 92vh;
+  height: 91vh;
 }
 
 #messagebox{
-  max-height: 600px;
+  max-height: 85vh;
   overflow-y: scroll;
   margin-right:25px;
   margin-top: 25px;
