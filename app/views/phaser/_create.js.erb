@@ -16,6 +16,9 @@ function Menu() {
     StoryText.tint = 0x990033;
     StoryText.inputEnabled = true;
     StoryText.events.onInputDown.add(Story);
+
+    music1 = game.add.audio('theme1');
+    music1.play();
 }
 
 function Story() {
