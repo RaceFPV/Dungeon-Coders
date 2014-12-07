@@ -1,5 +1,18 @@
 function create() {
-    //  We need to enable physics on the player and set world bounds
+    Menu();
+
+
+}
+
+function Menu() {
+    TitleText = game.add.bitmapText(game.world.centerX , game.world.centerY, 'carrier_command','Dungeon Coders',34);
+    startText = game.add.bitmapText(game.world.centerX , game.world.centery+200, 'carrier_command','Start Game',12);
+    startText.inputEnabled = true;
+    startText.events.onInputDown.add(Game);
+}
+
+function Game() {
+        //  We need to enable physics on the player and set world bounds
     game.physics.startSystem(Phaser.Physics.P2JS);
 
     //Tilemap and CollisionGroup
@@ -12,8 +25,8 @@ function create() {
     walls = game.physics.p2.convertCollisionObjects(map, "collision", true);
     for(var wall in walls)
     {
-	    walls[wall].setCollisionGroup(wallsCG);
-	    walls[wall].collides(playerCG);
+        walls[wall].setCollisionGroup(wallsCG);
+        walls[wall].collides(playerCG);
     }
     //  Our tiled scrolling background
     level = map.createLayer("background");
@@ -27,10 +40,10 @@ function create() {
     level1teleport = new Phaser.Rectangle(165, 225, 25, 25);
     hometeleport1 = new Phaser.Rectangle(2660,200,25,25);
 
-	  player = new Dude(myId);
-	  playersList[myId] = player;
+      player = new Dude(myId);
+      playersList[myId] = player;
     console.log(player + 'created');
-	  dude = player.dude;
+      dude = player.dude;
 
     game.physics.p2.setBoundsToWorld(true, true, true, true, false);
     //camera system
@@ -43,7 +56,5 @@ function create() {
 
     //Instructions
     //bmpText = game.add.bitmapText(10, 100, 'carrier_command','Drag me around !',12);
-
-
 
 }
