@@ -31,6 +31,8 @@ Dude = function (index) {
     this.dude.body.mass = 0.1;
     console.log('create player physics');
     this.dude.angle = 0;
+    this.dude.body.x = 500;
+    this.dude.body.y = 500;
     this.dude.body.collides([playerCG, wallsCG]);
     this.dude.body.collides([playerCG, objectsCG]);
 
