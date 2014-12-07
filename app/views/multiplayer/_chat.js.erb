@@ -3,8 +3,8 @@ $(function() {
   socket = new WebSocket("ws://" + window.location.host + "/chat");
   socket.onmessage = function(event) {
     if (event.data.length) {
-      $("#chat").append("<%= @thisplayer %> : " + event.data + "<br>");
-      document.getElementById('chat').scrollTop = 9999999;
+    $(".table-striped").append("<tr><td><%= @thisplayer %></td> <td>" + event.data + "</td></tr>");
+      document.getElementById('messagebox').scrollTop = 9999999;
     }
   };
 
