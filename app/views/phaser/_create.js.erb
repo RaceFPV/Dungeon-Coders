@@ -8,6 +8,12 @@ function Menu() {
     startText.tint = 0x339933;
     startText.inputEnabled = true;
     startText.events.onInputDown.add(Game);
+    StoryText = game.add.bitmapText(game.world.centerX-210, game.world.centerY-80, 'carrier_command', 'Click here to read the story', 15)
+    StoryText.tint = 0x990033;
+}
+
+function Story() {
+
 }
 
 function Game() {
