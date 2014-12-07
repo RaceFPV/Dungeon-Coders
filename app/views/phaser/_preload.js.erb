@@ -12,19 +12,19 @@ var clientSetup = function() {
 }
 
 var goleft = function(i) {
-    playersList[i].dude.body.x -= 5;
+    playersList[i].dude.body.x -= 4;
     playersList[i].dude.animations.play('left');
   }
 var goright = function(i) {
-    playersList[i].dude.body.x += 5;
+    playersList[i].dude.body.x += 4;
     playersList[i].dude.animations.play('right');
   }
 var goup = function(i) {
-    playersList[i].dude.body.y -= 5;
+    playersList[i].dude.body.y -= 4;
     playersList[i].dude.animations.play('up')
   }
 var godown = function(i) {
-    playersList[i].dude.body.y += 5;
+    playersList[i].dude.body.y += 4;
     playersList[i].dude.animations.play('down')
   }
 var attack = function(i) {
