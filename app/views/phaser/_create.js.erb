@@ -1,19 +1,55 @@
 function Menu() {
     titleText = game.add.bitmapText(game.world.centerX-280, game.world.centerY-200, 'carrier_command', 'Dungeon Coders', 34);
+
     titleText2 = game.add.bitmapText(game.world.centerX-210, game.world.centerY+150, 'carrier_command', 'W,A,S,D to move', 23);
     titleText2.tint = 0x334455;
+
     titleText3 = game.add.bitmapText(game.world.centerX-230, game.world.centerY+185, 'carrier_command', 'SPACE to interact', 23);
     titleText3.tint = 0x334455;
+
     startText = game.add.bitmapText(game.world.centerX-155, game.world.centerY-50, 'carrier_command', 'Click here to start', 15);
     startText.tint = 0x339933;
     startText.inputEnabled = true;
     startText.events.onInputDown.add(Game);
+
     StoryText = game.add.bitmapText(game.world.centerX-210, game.world.centerY-80, 'carrier_command', 'Click here to read the story', 15)
     StoryText.tint = 0x990033;
+    StoryText.inputEnabled = true;
+    StoryText.events.onInputDown.add(Story);
 }
 
 function Story() {
 
+    //I'M SO SORRY MIKE-SAN I KNOW IT'S UGLY BUT WE HAVE NO TIME DUDE
+    titleText.destroy();
+    titleText2.destroy();
+    titleText3.destroy();
+    startText.destroy();
+    StoryText.destroy();
+
+    
+    var story1 = " You have been chosen by the fate\n \
+    \n to save humanity and the Land of Miryks\n \
+    \n Challenge waits you from times to come,\n \
+    \n after the battle you have been fallen in a deep sleep\n \
+    \n You wake up in a strange place, full of buildings with door unlocked,\n\
+    \n you found near a scarlat letter with a weird simbol\n \
+    \n You must awake your deep powers inside you and save the world";
+    storyMessage = game.add.bitmapText(game.world.centerX-510, game.world.centerY-180, 'carrier_command',story1,14)
+    //#TODO: MOVE THIS TEXT FROM BOTTOM TO TOP STAR WARS LIKE 
+    //tw = game.add.tween(storyMessage);
+    //tw.to({ y: y - 300 }, 1000, Phaser.Easing.Linear.In);
+
+    returnText = game.add.bitmapText(game.world.centerX-230, game.world.centerY+85, 'carrier_command', 'Click here to return on menu', 15)
+    returnText.tint = 0x339933;
+    returnText.inputEnabled = true;
+    returnText.events.onInputDown.add(goMenu);
+}
+
+function goMenu() {
+    storyMessage.destroy();
+    returnText.destroy();
+    Menu();
 }
 
 function Game() {
