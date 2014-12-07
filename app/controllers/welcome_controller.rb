@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
   @@players = []
 
   def index
-    @messages = Message.all.order('created_at DESC').limit(50)
+    @messages = Message.all.order('created_at DESC').limit(50).reverse()
     @@players += [get_player.email.gsub(/[^0-9A-Za-z]/, '')]
     @players = @@players
     @thisplayer = get_player.email.gsub(/[^0-9A-Za-z]/, '')
