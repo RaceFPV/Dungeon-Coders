@@ -37,6 +37,11 @@ var killMe = function(i) {
 	      playersList[i].kill();
 }
 
+var teleportplayer1 = function(i) {
+  return Phaser.Rectangle.intersects(i.body, level1teleport);
+}
+
+
 var width = $('#gamescreen').innerWidth() - 50;
 var height = $('#gamescreen').innerHeight();
 var game = new Phaser.Game(width, height, Phaser.AUTO, 'gamescreen', { preload: preload, loadUpdate: loadUpdate, create: clientSetup, update: update, render: render });
@@ -53,9 +58,6 @@ function preload() {
     game.load.image('tiles1',"assets/tileset/hyptosis_tile-art-batch-1.png");
     game.load.image('tiles2',"assets/tileset/hyptosis_tile-art-batch-2.png");
     game.load.spritesheet('dude',"assets/tileset/brandonTile.png",14,21);
-
-    //game.load.bitmapFont('carrier_command', 'assets/fonts/carrier_command.png', 'assets/fonts/carrier_command.xml');
-
 }
 
 function loadUpdate() {

@@ -10,7 +10,7 @@ function create() {
     objectsCG = game.physics.p2.createCollisionGroup();
     wallsCG =  game.physics.p2.createCollisionGroup();
     playerCG = game.physics.p2.createCollisionGroup();
-    walls = game.physics.p2.convertCollisionObjects(map, "collision",true);
+    walls = game.physics.p2.convertCollisionObjects(map, "collision", true);
     for(var wall in walls)
     {
 	    walls[wall].setCollisionGroup(wallsCG);
@@ -24,6 +24,11 @@ function create() {
     layer2.resizeWorld();
     map.setCollisionBetween(1, 12);
     game.physics.p2.convertTilemap(map, level);
+    //create the teleporters
+    var shape = game.add.graphics(0, 0);  //init rect
+    shape.beginFill(0xFFFF0B, 1)
+    level1teleport = shape.drawRect(165,225,25,25);
+    level1teleport = level1teleport.getBounds();
 
 	  player = new Dude(myId);
 	  playersList[myId] = player;
@@ -34,9 +39,6 @@ function create() {
     //camera system
     game.camera.setBoundsToWorld();
     game.camera.follow(player.dude);
-
-    //controller system
-    cursors = game.input.keyboard.createCursorKeys();
 
     //announce us as a new player
     playerjoin(myId);
