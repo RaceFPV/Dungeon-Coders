@@ -1,17 +1,12 @@
-function create() {
-    Menu();
-
-
-}
-
 function Menu() {
-    TitleText = game.add.bitmapText(game.world.centerX , game.world.centerY, 'carrier_command','Dungeon Coders',34);
-    startText = game.add.bitmapText(game.world.centerX , game.world.centery+200, 'carrier_command','Start Game',12);
+    titleText = game.add.bitmapText(game.world.centerX-200, game.world.centerY, 'carrier_command', 'Dungeon Coders', 34);
+    startText = game.add.bitmapText(game.world.centerX, game.world.centerY+200, 'carrier_command', 'Start Game', 12);
     startText.inputEnabled = true;
     startText.events.onInputDown.add(Game);
 }
 
 function Game() {
+
         //  We need to enable physics on the player and set world bounds
     game.physics.startSystem(Phaser.Physics.P2JS);
 
@@ -57,4 +52,10 @@ function Game() {
     //Instructions
     //bmpText = game.add.bitmapText(10, 100, 'carrier_command','Drag me around !',12);
 
+    //spawn the other players on the server
+    <% if @players %>
+      <% @players.uniq.each do |x| %>
+        spawnPlayer('<%= x %>');
+      <% end %>
+    <% end %>
 }

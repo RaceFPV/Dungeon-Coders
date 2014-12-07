@@ -1,5 +1,4 @@
 class WelcomeController < ApplicationController
-  
   @@players = []
 
   def index

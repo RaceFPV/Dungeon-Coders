@@ -1,14 +1,7 @@
 //this function will handle client communication with the server
 var clientSetup = function() {
 		//create() is moved here to make sure nothing is created before uniq id assignation
-		create();
-
-<% if @players %>
-  <% @players.uniq.each do |x| %>
-      spawnPlayer('<%= x %>');
-  <% end %>
-<% end %>
-  playersList[myId] = player;
+		Menu();
 }
 
 var goleft = function(i) {
