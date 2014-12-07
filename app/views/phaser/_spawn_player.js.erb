@@ -11,7 +11,8 @@ Dude = function (index) {
 
     console.log('set initial player variables');
     //player settings
-    this.dude = game.add.sprite(100, 100, 'dude');
+    this.dude = game.add.sprite(5, 5, 'dude');
+    this.dude.scale.setTo(0.175, 0.175);
     this.dude.animations.add('down', [0, 1, 2], 10, true);
     this.dude.animations.add('up', [3, 4, 5], 10, true);
     this.dude.animations.add('right', [6, 7, 8], 10, true);
@@ -23,7 +24,6 @@ Dude = function (index) {
     this.dude.id = index;
     this.game.physics.p2.enable(this.dude, false);
     //DEFINE PLAYER BODY
-    this.dude.scale.setTo(1.2, 1.2);
     this.dude.body.setZeroDamping();
     this.dude.body.fixedRotation = true;
     this.dude.body.setMaterial(this.playerMaterial);
