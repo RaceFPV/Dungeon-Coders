@@ -1,9 +1,6 @@
 // for when new players join and leave
 Dude = function (index) {
 
-    var x = 150;
-    var y = 150;
-
     this.game = game;
     this.health = 30;
     this.player = player;
@@ -19,7 +16,7 @@ Dude = function (index) {
     this.dude.animations.add('up', [3, 4, 5], 10, true);
     this.dude.animations.add('right', [6, 7, 8], 10, true);
     this.dude.animations.add('left', [9, 10, 11], 10, true);
-    this.dude.anchor.set(0.5);
+    this.dude.anchor.set(0.1);
 
     console.log('create player sprite and movement sprites');
 
@@ -29,14 +26,13 @@ Dude = function (index) {
     this.dude.scale.setTo(1.2, 1.2);
     this.dude.body.setZeroDamping();
     this.dude.body.fixedRotation = true;
-    this.dude.body.setCollisionGroup(playerCG);
-    this.dude.body.mass = 1;
     this.dude.body.setMaterial(this.playerMaterial);
+    this.dude.body.setCollisionGroup(playerCG);
+    this.dude.body.mass = 0.1;
     console.log('create player physics');
     this.dude.angle = 0;
     this.dude.body.collides([playerCG, wallsCG]);
     this.dude.body.collides([playerCG, objectsCG]);
-    this.dude.body.collideWorldBounds = true;
 
     console.log('set player position');
 };
