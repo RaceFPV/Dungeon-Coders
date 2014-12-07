@@ -1,6 +1,6 @@
 function Menu() {
-    titleText = game.add.bitmapText(game.world.centerX-200, game.world.centerY, 'carrier_command', 'Dungeon Coders', 34);
-    startText = game.add.bitmapText(game.world.centerX, game.world.centerY+200, 'carrier_command', 'Click here to start', 12);
+    titleText = game.add.bitmapText(game.world.centerX-250, game.world.centerY-150, 'carrier_command', 'Dungeon Coders', 34);
+    startText = game.add.bitmapText(game.world.centerX-75, game.world.centerY-50, 'carrier_command', 'Click here to start', 12);
     startText.inputEnabled = true;
     startText.events.onInputDown.add(Game);
 }
@@ -54,7 +54,7 @@ function Game() {
 	  // create our score text in the top left corner
     text = game.add.text(game.camera.x,game.camera.y, "Score: 0", {
         font: "24px carrier_command",
-        fill: "#ff0044",
+        fill: "#ffffff",
         align: "center"
     });
 
