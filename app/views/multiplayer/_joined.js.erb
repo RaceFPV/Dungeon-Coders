@@ -4,7 +4,7 @@ $(function () {
   socket.onmessage = function(event) {
     if (event.data.length) {
      if ( event.data.charAt( 0 ) == 'j' ) {
-      var string = event.data+' has connected';
+      var string = event.data.split("@")[0]+' has connected';
       string = string.substring(1);
       toastr.success(string);
     }
