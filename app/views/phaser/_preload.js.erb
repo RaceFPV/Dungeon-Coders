@@ -28,7 +28,13 @@ var attack = function(i) {
   if (player1npclocation(playersList[i].dude)) {
     dialog.x = playersList[i].dude.body.x-50;
     dialog.y = playersList[i].dude.body.y+10;
-    dialog.setText('"Begin your journey into the world of code and numbers"');
+    dialog.setText('"Begin your journey into the world of code and numbers."');
+    playersList[i].dude.animations.stop();
+  }
+  else if (player2npclocation(playersList[i].dude)) {
+    dialog.x = playersList[i].dude.body.x-50;
+    dialog.y = playersList[i].dude.body.y+10;
+    dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
     playersList[i].dude.animations.stop();
   }
   else {
@@ -48,6 +54,10 @@ var teleportplayer1 = function(i) {
 
 var player1npclocation = function(i) {
   return Phaser.Rectangle.contains(level1npc, i.body.x, i.body.y);
+}
+
+var player2npclocation = function(i) {
+  return Phaser.Rectangle.contains(level2npc, i.body.x, i.body.y);
 }
 
 teleportplayer1home = function(i) {
