@@ -1,4 +1,4 @@
-var myId = '<%= @thisplayer %>';
+var myId = '<%= @thisplayer.gsub(/[^0-9A-Za-z]/, '') %>';
 
 var land;
 var player;
