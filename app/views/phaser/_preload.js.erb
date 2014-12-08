@@ -96,7 +96,7 @@ var attack = function(i) {
     playersList[i].dialog.x = playersList[i].dude.body.x-50;
     playersList[i].dialog.y = playersList[i].dude.body.y+10;
     playersList[i].dialog.alpha = 1;
-    playersList[i].dialog.setText('"You are brave, adventurer, that is sure. \n But now you must be asked this: \n If is a big part of our world, and you need to know the correct way to write it. \n \n The left stairs have (if 1 = 1 then true end) \n While the right stairs have (if 1 == 1 then true end) \n Choose your fate wisely."');
+    playersList[i].dialog.setText('"Making it this far is impressive. \n I only have one question left to ask: \n When you want to show the results of your work \n how would you do that? \n \n left door(finish 12345) \n right door(return 12345)"');
     game.time.events.add(15000, function() {
       game.add.tween(playersList[i].dialog).to({alpha: 0}, 2500, Phaser.Easing.Linear.None, true);
     }, this);
