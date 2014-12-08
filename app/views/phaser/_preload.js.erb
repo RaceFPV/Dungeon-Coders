@@ -77,7 +77,7 @@ var attack = function(i) {
     playersList[i].dialog.y = playersList[i].dude.body.y+10;
     playersList[i].dialog.alpha = 1;
     playersList[i].dialog.setText('"Once upon a time, there were numbers and letters. \n To assign a number or letter you would use something called a variable. \n The left tunnel uses x = 5 as a number variable \n while the right tunnel uses var number == 5 \n choosing the right variable may be helpful in the future."');
-    game.time.events.add(10000, function() {
+    game.time.events.add(15000, function() {
       game.add.tween(playersList[i].dialog).to({alpha: 0}, 2500, Phaser.Easing.Linear.None, true);
     }, this);
     playersList[i].dude.animations.stop();
