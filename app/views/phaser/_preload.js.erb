@@ -72,6 +72,16 @@ var attack = function(i) {
     }, this);
     playersList[i].dude.animations.stop();
   }
+  else if (playernpclocation(level1dialog, playersList[i].dude)) {
+    playersList[i].dialog.x = playersList[i].dude.body.x-50;
+    playersList[i].dialog.y = playersList[i].dude.body.y+10;
+    playersList[i].dialog.alpha = 1;
+    playersList[i].dialog.setText('"Once upon a time, there were numbers and letters. \n To assign a number or letter you would use something called a variable. \n The left tunnel uses x = 5 as a number variable \n while the right tunnel uses var number == 5 \n choosing the right variable may be helpful in the future."');
+    game.time.events.add(5000, function() {
+      game.add.tween(playersList[i].dialog).to({alpha: 0}, 2500, Phaser.Easing.Linear.None, true);
+    }, this);
+    playersList[i].dude.animations.stop();
+  }
   //end npc dialog check
   else {
     playersList[i].dude.animations.stop();
@@ -92,9 +102,6 @@ var teleportplayer1 = function(i) {
 teleportplayer1home = function(i) {
   return Phaser.Rectangle.contains(hometeleport1, i.body.x, i.body.y);
 }
-//var teleportplayer2 = function(i) {
-//  return Phaser.Rectangle.contains(level2teleport, i.body.x, i.body.y);
-//}
 
 //teleportplayer2home = function(i) {
 //  return Phaser.Rectangle.contains(hometeleport2, i.body.x, i.body.y);
@@ -120,7 +127,7 @@ function preload() {
   this.preloadBar.lineTo(game.width+100, 0);
   this.preloadBar.scale.x = 0; // set the bar to the beginning position
 
-    game.load.tilemap('level',"assets/tileset/latestlevel.json",null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap('level',"assets/tileset/levelbeforecrash.json",null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tiles1',"assets/tileset/hyptosis_tile-art-batch-1.png");
     game.load.image('tiles2',"assets/tileset/hyptosis_tile-art-batch-2.png");
     game.load.spritesheet('dude',"assets/tileset/playersprite.png",100,146);
