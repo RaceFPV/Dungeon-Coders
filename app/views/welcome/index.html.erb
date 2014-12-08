@@ -16,7 +16,10 @@
       <tbody>
       <% @messages.each do |x| %>
         <tr>
-          <td><%= x.name %></td> <td><%= x.content %></td>
+          <td><%= x.name %></td> 
+          <tr>
+            <td><%= x.content %></td>
+          </tr>
         </tr>
       <% end %>
       </tbody>
