@@ -13,27 +13,21 @@ Dude.prototype.update = function() {
           this.dude.body.x = 300;
           this.dude.body.y = 300;
         }
-        // check if player is standing on level 1 dialog
-        //if (level1diag(this.dude)) {
-        //  this.dude.body.x = 7045;
-        //  this.dude.body.y = 1475;
-        //}
-        // check if player is standing on teleporter 2 home
-        //if (teleportplayer2home(this.dude)) {
-        //  this.dude.body.x = 300;
-        //  this.dude.body.y = 300;
-        //}
+        // check if player is standing on level 1 success
+        if (teleportplayer1success(this.dude)) {
+          this.dude.body.x = 6340;
+          this.dude.body.y = 550;
+        }
+        // check if player is standing on level 1 fail
+        if (teleportplayer1fail(this.dude)) {
+          this.dude.body.x = 2690;
+          this.dude.body.y = 225;
+        }
         this.dude.body.velocity.x = 0;
         this.dude.body.velocity.y = 0;
 };
 
 function update() {
-  // make the score text always follow where the camera is
-  if (text) {
-  text.x = game.camera.x;
-  text.y = game.camera.y;
-  text.setText("Health:" + playersList[myId].health);
-  }
 
     for (var i in playersList) {
 		  if (!playersList[i]) continue;
@@ -52,8 +46,6 @@ function render() {
     //game.debug.bodyInfo(player.dude.body, 32, 32)
     //game.debug.geom(hometeleport1,'#0fffff');
     //game.debug.geom(level1teleport,'#0fffff');
-    //game.debug.geom(hometeleport2,'#0fffff');
-    //game.debug.geom(level2teleport,'#0fffff');
     //game.debug.geom(level1npc, '#0fffff');
     //game.debug.geom(level2npc, '#0fffff');
     //game.debug.geom(level3npc, '#0fffff');
