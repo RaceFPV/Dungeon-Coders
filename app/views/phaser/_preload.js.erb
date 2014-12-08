@@ -7,22 +7,18 @@ var clientSetup = function() {
 var goleft = function(i) {
     playersList[i].dude.body.x -= 4;
     playersList[i].dude.animations.play('left');
-    dialog.setText("")
   }
 var goright = function(i) {
     playersList[i].dude.body.x += 4;
     playersList[i].dude.animations.play('right');
-    dialog.setText("")
   }
 var goup = function(i) {
     playersList[i].dude.body.y -= 4;
-    playersList[i].dude.animations.play('up')
-    dialog.setText("")
+    playersList[i].dude.animations.play('up');
   }
 var godown = function(i) {
     playersList[i].dude.body.y += 4;
-    playersList[i].dude.animations.play('down')
-    dialog.setText("")
+    playersList[i].dude.animations.play('down');
   }
 var attack = function(i) {
   //check for npc dialog
@@ -97,7 +93,7 @@ function preload() {
   this.preloadBar.lineTo(game.width+100, 0);
   this.preloadBar.scale.x = 0; // set the bar to the beginning position
 
-    game.load.tilemap('level',"assets/tileset/levelbeforecrash.json",null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap('level',"assets/tileset/latestlevel.json",null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tiles1',"assets/tileset/hyptosis_tile-art-batch-1.png");
     game.load.image('tiles2',"assets/tileset/hyptosis_tile-art-batch-2.png");
     game.load.spritesheet('dude',"assets/tileset/playersprite.png",100,146);
