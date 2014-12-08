@@ -72,6 +72,13 @@ var teleportplayer1 = function(i) {
 teleportplayer1home = function(i) {
   return Phaser.Rectangle.contains(hometeleport1, i.body.x, i.body.y);
 }
+var teleportplayer2 = function(i) {
+  return Phaser.Rectangle.contains(level2teleport, i.body.x, i.body.y);
+}
+
+teleportplayer2home = function(i) {
+  return Phaser.Rectangle.contains(hometeleport2, i.body.x, i.body.y);
+}
 //end teleporter location check
 
 //npc location check
