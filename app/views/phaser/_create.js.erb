@@ -16,9 +16,6 @@ function Menu() {
     StoryText.tint = 0x990033;
     StoryText.inputEnabled = true;
     StoryText.events.onInputDown.add(Story);
-
-    music1 = game.add.audio('theme1',1,true);
-    music1.play();
 }
 
 function Story() {
@@ -56,6 +53,8 @@ function goMenu() {
 }
 
 function Game() {
+    music1 = game.add.audio('theme1',1,true);
+    music1.play();
 
         //  We need to enable physics on the player and set world bounds
     game.physics.startSystem(Phaser.Physics.P2JS);
