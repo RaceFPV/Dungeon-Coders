@@ -19,7 +19,7 @@ The first educational MMOG about programming!
 
 ##Gameplay
 
-Dungeon Coders is an MMOG (Massive Multiplayer Online Game) that will teach you the basic principe of programming.
+Dungeon Coders is an MMOG (Massive Multiplayer Online Game) that will teach you the basic principles of programming.
 
 
 ##Screenshot
