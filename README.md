@@ -36,8 +36,10 @@ Dungeon Coders is an MMOG (Massive Multiplayer Online Game) that will teach you 
 * Nginx
 * Ruby on Rails
 * Bootstrapp
-* Tubesocket
+* Tubesock
+* redis
+* postgresql
 * puma
 * Phaser
-* free tileset
-* Free music here
+* [Hyptosis' free tileset](http://opengameart.org/content/lots-of-free-2d-tiles-and-sprites-by-hyptosis)
+* Free music [here](http://soundimage.org/fantasywonder/)
