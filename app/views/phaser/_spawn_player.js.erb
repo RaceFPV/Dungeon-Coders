@@ -9,6 +9,13 @@ Dude = function (index) {
 	  this.currentSpeed = 0;
     this.alive = true;
 
+    //create our dialog box at the bottom
+    this.dialog = game.add.text(0,0, "", {
+        font: "16px carrier_command",
+        fill: "#ffffff",
+        align: "center"
+    });
+
     console.log('set initial player variables');
     //player settings
     this.dude = game.add.sprite(5, 5, 'dude');

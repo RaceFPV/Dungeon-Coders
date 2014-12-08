@@ -23,33 +23,53 @@ var godown = function(i) {
 var attack = function(i) {
   //check for npc dialog
   if (playernpclocation(level1npc, playersList[i].dude)) {
-    dialog.x = playersList[i].dude.body.x-50;
-    dialog.y = playersList[i].dude.body.y+10;
-    dialog.setText('"Begin your journey into the world of code and numbers."');
+    playersList[i].dialog.x = playersList[i].dude.body.x-50;
+    playersList[i].dialog.y = playersList[i].dude.body.y+10;
+    playersList[i].dialog.alpha = 1;
+    playersList[i].dialog.setText('"Begin your journey into the ruby mine."');
+    game.time.events.add(5000, function() {
+      game.add.tween(playersList[i].dialog).to({alpha: 0}, 2500, Phaser.Easing.Linear.None, true);
+    }, this);
     playersList[i].dude.animations.stop();
   }
   else if (playernpclocation(level2npc, playersList[i].dude)) {
-    dialog.x = playersList[i].dude.body.x-50;
-    dialog.y = playersList[i].dude.body.y+10;
-    dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
+    playersList[i].dialog.x = playersList[i].dude.body.x-50;
+    playersList[i].dialog.y = playersList[i].dude.body.y+10;
+    playersList[i].dialog.alpha = 1;
+    playersList[i].dialog.setText('"There are too many pythons down there now, come back later."');
+    game.time.events.add(5000, function() {
+      game.add.tween(playersList[i].dialog).to({alpha: 0}, 2500, Phaser.Easing.Linear.None, true);
+    }, this);
     playersList[i].dude.animations.stop();
   }
   else if (playernpclocation(level3npc, playersList[i].dude)) {
-    dialog.x = playersList[i].dude.body.x-50;
-    dialog.y = playersList[i].dude.body.y+10;
-    dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
+    playersList[i].dialog.x = playersList[i].dude.body.x-50;
+    playersList[i].dialog.y = playersList[i].dude.body.y+10;
+    playersList[i].dialog.alpha = 1;
+    playersList[i].dialog.setText('"We are still digging out these java mines, come back later."');
+    game.time.events.add(5000, function() {
+      game.add.tween(playersList[i].dialog).to({alpha: 0}, 2500, Phaser.Easing.Linear.None, true);
+    }, this);
     playersList[i].dude.animations.stop();
   }
   else if (playernpclocation(level4npc, playersList[i].dude)) {
-    dialog.x = playersList[i].dude.body.x-50;
-    dialog.y = playersList[i].dude.body.y+10;
-    dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
+    playersList[i].dialog.x = playersList[i].dude.body.x-50;
+    playersList[i].dialog.y = playersList[i].dude.body.y+10;
+    playersList[i].dialog.alpha = 1;
+    playersList[i].dialog.setText('"The door seems shut by some sort of java with scripture, come back later."');
+    game.time.events.add(5000, function() {
+      game.add.tween(playersList[i].dialog).to({alpha: 0}, 2500, Phaser.Easing.Linear.None, true);
+    }, this);
     playersList[i].dude.animations.stop();
   }
   else if (playernpclocation(level5npc, playersList[i].dude)) {
-    dialog.x = playersList[i].dude.body.x-50;
-    dialog.y = playersList[i].dude.body.y+10;
-    dialog.setText('"Sorry kids, wally worlds closed, come back again tomorrow."');
+    playersList[i].dialog.x = playersList[i].dude.body.x-50;
+    playersList[i].dialog.y = playersList[i].dude.body.y+10;
+    playersList[i].dialog.alpha = 1;
+    playersList[i].dialog.setText('"Its too dark to see sharply yet, come back later."');
+    game.time.events.add(5000, function() {
+      game.add.tween(playersList[i].dialog).to({alpha: 0}, 2500, Phaser.Easing.Linear.None, true);
+    }, this);
     playersList[i].dude.animations.stop();
   }
   //end npc dialog check
@@ -72,13 +92,13 @@ var teleportplayer1 = function(i) {
 teleportplayer1home = function(i) {
   return Phaser.Rectangle.contains(hometeleport1, i.body.x, i.body.y);
 }
-var teleportplayer2 = function(i) {
-  return Phaser.Rectangle.contains(level2teleport, i.body.x, i.body.y);
-}
+//var teleportplayer2 = function(i) {
+//  return Phaser.Rectangle.contains(level2teleport, i.body.x, i.body.y);
+//}
 
-teleportplayer2home = function(i) {
-  return Phaser.Rectangle.contains(hometeleport2, i.body.x, i.body.y);
-}
+//teleportplayer2home = function(i) {
+//  return Phaser.Rectangle.contains(hometeleport2, i.body.x, i.body.y);
+//}
 //end teleporter location check
 
 //npc location check
