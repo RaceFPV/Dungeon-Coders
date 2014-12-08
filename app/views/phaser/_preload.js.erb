@@ -92,6 +92,16 @@ var attack = function(i) {
     }, this);
     playersList[i].dude.animations.stop();
   }
+  else if (playernpclocation(level3dialog, playersList[i].dude)) {
+    playersList[i].dialog.x = playersList[i].dude.body.x-50;
+    playersList[i].dialog.y = playersList[i].dude.body.y+10;
+    playersList[i].dialog.alpha = 1;
+    playersList[i].dialog.setText('"You are brave, adventurer, that is sure. \n But now you must be asked this: \n If is a big part of our world, and you need to know the correct way to write it. \n \n The left stairs have (if 1 = 1 then true end) \n While the right stairs have (if 1 == 1 then true end) \n Choose your fate wisely."');
+    game.time.events.add(15000, function() {
+      game.add.tween(playersList[i].dialog).to({alpha: 0}, 2500, Phaser.Easing.Linear.None, true);
+    }, this);
+    playersList[i].dude.animations.stop();
+  }
   //end npc dialog check
   else {
     playersList[i].dude.animations.stop();
@@ -119,6 +129,22 @@ teleportplayer1success = function(i) {
 
 teleportplayer1fail = function(i) {
   return Phaser.Rectangle.contains(level1teleportfail, i.body.x, i.body.y);
+}
+
+teleportplayer2success = function(i) {
+  return Phaser.Rectangle.contains(level2teleportsuccess, i.body.x, i.body.y);
+}
+
+teleportplayer2fail = function(i) {
+  return Phaser.Rectangle.contains(level2teleportfail, i.body.x, i.body.y);
+}
+
+teleportplayer3success = function(i) {
+  return Phaser.Rectangle.contains(level3teleportsuccess, i.body.x, i.body.y);
+}
+
+teleportplayer3fail = function(i) {
+  return Phaser.Rectangle.contains(level3teleportfail, i.body.x, i.body.y);
 }
 
 //npc location check
